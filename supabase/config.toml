@@ -1,0 +1,33 @@
+# Configuração LOCAL mínima (supabase start). STATUS: NÃO VERIFICADO — `supabase init` gera o arquivo
+# canônico da versão do CLI; mesclar estas chaves nele se houver divergência de nomes.
+project_id = "private-points"
+
+[auth]
+site_url = "http://127.0.0.1:3000"
+enable_signup = true
+jwt_expiry = 3600
+
+[auth.email]
+enable_signup = true
+enable_confirmations = true   # confirmação obrigatória (spec 9)
+
+# SMTP real entra por variáveis de ambiente (provedor ainda não definido — D25). Exemplo, descomentar ao definir:
+# [auth.email.smtp]
+# enabled = true
+# host = "env(SMTP_HOST)"
+# port = 587
+# user = "env(SMTP_USER)"
+# pass = "env(SMTP_PASS)"
+# admin_email = "env(SMTP_SENDER)"
+
+# Captcha: ligar no staging/produção com o segredo em variável de ambiente (nunca no repositório).
+# [auth.captcha]
+# enabled = true
+# provider = "turnstile"
+# secret = "env(TURNSTILE_SECRET)"
+
+# Hook de sessão única. Formato esperado pelo CLI: pg-functions://<db>/<schema>/<função>.
+# Ativar SOMENTE depois de aplicar supabase/spike/001_hook_probe.sql (o hook precisa existir).
+# [auth.hook.custom_access_token]
+# enabled = true
+# uri = "pg-functions://postgres/public/custom_access_token_hook"

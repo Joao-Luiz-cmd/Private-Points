@@ -1,0 +1,30 @@
+{
+  "name": "private-points",
+  "version": "0.1.0",
+  "private": true,
+  "main": "index.ts",
+  "engines": {
+    "node": ">=22.13.0"
+  },
+  "scripts": {
+    "start": "expo start --dev-client",
+    "android": "expo run:android",
+    "ios": "expo run:ios",
+    "lint": "eslint .",
+    "format": "prettier --write .",
+    "format:check": "prettier --check .",
+    "typecheck": "tsc --noEmit",
+    "test": "jest",
+    "test:coverage": "jest --coverage",
+    "verify": "npm run typecheck && npm run lint && npm run format:check && npm test",
+    "logic-check": "tsc -p tools/logic-check/tsconfig.json && node tools/logic-check/run.cjs"
+  },
+  "dependencies": {
+    "expo": "~57.0.22",
+    "react": "19.2.3",
+    "react-native": "0.86.3",
+    "expo-constants": "~57.0.18",
+    "expo-dev-client": "~57.0.19",
+    "expo-secure-store": "~57.0.3"
+  }
+}

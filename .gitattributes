@@ -1,0 +1,6 @@
+# Evita que o Git for Windows converta shell scripts para CRLF (quebra no Git Bash/WSL).
+* text=auto
+*.sh text eol=lf
+*.sql text eol=lf
+*.toml text eol=lf
+*.png binary
